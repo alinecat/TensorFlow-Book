@@ -62,7 +62,7 @@ accuracy = tf.reduce_mean(tf.cast(correct_prediction, "float"))
 with tf.Session() as sess:
     tf.initialize_all_variables().run()
 
-    for step in xrange(training_epochs * train_size // batch_size):
+    for step in range(training_epochs * train_size // batch_size):
         offset = (step * batch_size) % train_size
         batch_xs = xs[offset:(offset + batch_size), :]
         batch_labels = labels[offset:(offset + batch_size)]
@@ -73,4 +73,4 @@ with tf.Session() as sess:
     print('w', W_val)
     b_val = sess.run(b)
     print('b', b_val)
-    print "accuracy", accuracy.eval(feed_dict={X: test_xs, Y: test_labels})
+    print ("accuracy", accuracy.eval(feed_dict={X: test_xs, Y: test_labels}))
